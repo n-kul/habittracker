@@ -9,7 +9,7 @@ form.addEventListener("submit", async (e) => {
   const study = document.getElementById("study").checked;
   const wake = document.getElementById("wake").checked;
 
-  const res = await fetch("https://YOUR-BACKEND-URL/submit", {
+  const res = await fetch("https://habittracker-koi2.onrender.com", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ username, gym, study, wake })
@@ -19,7 +19,7 @@ form.addEventListener("submit", async (e) => {
 });
 
 async function loadProgress() {
-  const res = await fetch("https://YOUR-BACKEND-URL/progress");
+  const res = await fetch("https://habittracker-koi2.onrender.com");
   const data = await res.json();
   progressDiv.innerHTML = "";
 
