@@ -1,6 +1,8 @@
 const form = document.getElementById("habit-form");
 const progressDiv = document.getElementById("progress");
 
+const BACKEND_URL = "https://habittracker-koi2.onrender.com";  // Make sure this is your correct Render backend URL
+
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -9,7 +11,7 @@ form.addEventListener("submit", async (e) => {
   const study = document.getElementById("study").checked;
   const wake = document.getElementById("wake").checked;
 
-  const res = await fetch("https://habittracker-koi2.onrender.com", {
+  const res = await fetch(`${BACKEND_URL}/submit`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ username, gym, study, wake })
@@ -19,7 +21,7 @@ form.addEventListener("submit", async (e) => {
 });
 
 async function loadProgress() {
-  const res = await fetch("https://habittracker-koi2.onrender.com");
+  const res = await fetch(`${BACKEND_URL}/progress`);
   const data = await res.json();
   progressDiv.innerHTML = "";
 
